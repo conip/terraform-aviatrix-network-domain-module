@@ -3,18 +3,6 @@ locals {
   create_domain = length(local.network_domains_set) > 0 ? true : false
   create_policy = length(local.policy) > 0 ? true : false
 
-  # policy = var.strict_mode ? toset(flatten([
-  #   for domain, values in local.network_domains_set : [
-  #     for value in values : 
-  #     "${sort([value, domain])[0]}~~${sort([value,domain])[1]}" 
-  #     if try(contains(local.network_domains_set[value], domain), false)
-  #   ]
-  # ])) : toset(flatten([
-  #   for domain, values in local.network_domains_set : [
-  #     for value in values : 
-  #     "${sort([value, domain])[0]}~~${sort([value,domain])[1]}" 
-  #   ]
-  # ]))
   policy = var.strict_mode ? toset(flatten([
     for domain, values in var.network_domains : [
       for value in values : 
