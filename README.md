@@ -22,7 +22,7 @@ module "my_network_domains" {
 }
 ```
 policy between domain1 and domain9 or 7 will not be created as 7,9 don't have 1 listed	
-domain7 and domain9 will just be created
+<br>domain7 and domain9 will just be created
 
 ## Example 2 - strict_mode = false
 Here policy will be built if there is just one pair defined. 
