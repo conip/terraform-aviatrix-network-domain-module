@@ -6,13 +6,13 @@ locals {
   policy = var.strict_mode ? toset(flatten([
     for domain, values in var.network_domains : [
       for value in values : 
-      "${sort([value, domain])[0]}~~${sort([value,domain])[1]}" 
+      "${sort([value, domain])[0]}~${sort([value,domain])[1]}" 
       if try(contains(var.network_domains[value], domain), false)
     ]
   ])) : toset(flatten([
     for domain, values in var.network_domains : [
       for value in values : 
-      "${sort([value, domain])[0]}~~${sort([value,domain])[1]}" 
+      "${sort([value, domain])[0]}~${sort([value,domain])[1]}" 
     ]
   ]))
 }
@@ -24,7 +24,7 @@ resource "aviatrix_segmentation_network_domain" "segmentation_network_domain" {
 
 resource "aviatrix_segmentation_network_domain_connection_policy" "domain_policy" {
   for_each      = local.create_policy ? local.policy : toset([])
-  domain_name_1 = trimspace(split("~~", each.key)[0])
-  domain_name_2 = trimspace(split("~~", each.key)[1])
+  domain_name_1 = trimspace(split("~", each.key)[0])
+  domain_name_2 = trimspace(split("~", each.key)[1])
   depends_on = [ aviatrix_segmentation_network_domain.segmentation_network_domain ]
 }
