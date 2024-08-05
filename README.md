@@ -1,5 +1,19 @@
 # terraform-aviatrix-network-domain-module
-Allows to define network domains and build policy in a simplified way
+## Description
+Module allows to define network domains and build policy in a simplified way. It can also make specific connection/spoke association. 
+
+Compatibility
+| Module version | Terraform version | Controller version | Terraform provider version |
+|--|--|--|--|
+| v1.0.0 | >=1.1.0 | >= 7.0 | v= 3.0.0 | 
+
+
+### Variables
+| variable | default | type | description |
+| -- | -- | -- | -- |
+| strict_mode | false | bool | defines policy definition mode. If true requires domain to be listed both ways in order to allowe traffic between network domains. <br>If false it is enough to define network domain just under one to create a policy | 
+| network_domains | null | map | creates network domain and its corresponding policies. If value is left as empty [], the empty domain will be created. |
+| associations | | map(string) | allows to associte individual spoke / vpn / connection to specific domain name |
 
 
 ## Example 1 - strict_mode = true
