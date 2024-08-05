@@ -36,6 +36,12 @@ module "my_network_domains" {
       "domain3" = [],
       "domain4" = []
   }
+
+  associations = {
+    "spoke1" = "domain1",
+    "vpn1"   = "domain2",
+  }
+}
 }
 ```
 There will be connection policy between 1-2, 1-3, 1-4, 2-3, 2-4
