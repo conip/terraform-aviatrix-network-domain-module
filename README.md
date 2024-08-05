@@ -5,7 +5,7 @@ Module allows to define network domains and build policy in a simplified way. It
 Compatibility
 | Module version | Terraform version | Controller version | Terraform provider version |
 |--|--|--|--|
-| v1.0.0 | >=1.1.0 | >= 7.0 | v= 3.0.0 | 
+| v1.0.0 | >=1.1.0 | >= 7.0 | >= 3.0.0 | 
 
 
 ### Variables
