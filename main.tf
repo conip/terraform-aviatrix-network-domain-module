@@ -28,3 +28,14 @@ resource "aviatrix_segmentation_network_domain_connection_policy" "domain_policy
   domain_name_2 = trimspace(split("~", each.key)[1])
   depends_on = [ aviatrix_segmentation_network_domain.segmentation_network_domain ]
 }
+
+resource "aviatrix_segmentation_network_domain_association" "default_domain_association" {
+  for_each = var.associations
+
+  network_domain_name  = each.value
+  attachment_name      = each.key
+
+  depends_on = [
+    aviatrix_segmentation_network_domain.segmentation_network_domain
+  ]
+}
