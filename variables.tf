@@ -11,7 +11,7 @@ variable "strict_mode" {
 
 variable "associations" {
   description = "A map with network domain associations"
-  type        = map(map(string))
+  type        = map(string)
   default     = {}
   nullable    = false
 }
